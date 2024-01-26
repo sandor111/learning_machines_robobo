@@ -57,14 +57,11 @@ def test_sim(rob: SimulationRobobo):
 def run_all_actions(rob: IRobobo):
     if isinstance(rob, SimulationRobobo):
         rob.play_simulation()
-    test_emotions(rob)
-    test_sensors(rob)
-    test_move_and_wheel_reset(rob)
-    if isinstance(rob, SimulationRobobo):
-        test_sim(rob)
-        rob.set_realtime()
-
-    test_phone_movement(rob)
+    
+    for _ in range(500):
+        frame = rob.get_image_front()
+        rob.sleep(2)
+        print("saved image")
 
     if isinstance(rob, SimulationRobobo):
         rob.stop_simulation()
